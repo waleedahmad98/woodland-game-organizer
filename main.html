@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://css.gg/css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <div class="top-bar">
+        <img id="lw-logo" src="html/top-bar-logo.png ">
+        <h2 id="home-title">Library</h2>
+        <button class="gg-add add-btn" onclick="location.href='./add_game.html';"></button>
+        <button class="gg-remove rmv-btn" onclick="location.href='./rmv_game.html';"></button>
+        <button class="gg-close cls-btn" onclick="window.close();"></button>
+
+    </div>
+
+    <div id="loader-container">
+        <loader id="game-loader"></loader>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.2.0/vue-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+
+    <script src="event-bus.js"></script>
+    <script src="loader-vue.js"></script>
+
+
+</body>
+
+</html>
