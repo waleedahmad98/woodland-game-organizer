@@ -6,7 +6,7 @@ Woodland is an eletron application that stores currently installed games on your
 
 ## Installation
 Download the executable file from
-[here](http://github.com) and install it on your personal computer.
+[here](https://github.com/waleedahmad98/woodland-game-organizer/releases/tag/1.0.0) and install it on your personal computer.
 
 ## Usage
 Once the application launches, use the 'F9' key to hide/display the main window. The application also appears in the tray on your taskbar.
