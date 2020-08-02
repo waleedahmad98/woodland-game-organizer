@@ -52,11 +52,12 @@ function actionBar(win, app, Menu, Tray, appIcon) {
     appIcon.setContextMenu(contextMenu);
 
     win.on('close', function(event) {
-        if (!app.isQuiting) {
+        /* if (!app.isQuiting) {
             event.preventDefault();
-            win.hide();
-        }
-
+            win.close();
+        } */
+        app.isQuiting = true;
+        app.quit();
         return false;
     });
 

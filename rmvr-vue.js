@@ -31,7 +31,7 @@ Vue.component('rmvr', {
             if (confirm('Are you sure you want to remove ' + name + ' from your library?')) {
                 window.saveJSON(data);
                 window.location = "./main.html";
-                alert(name + ' was successfully removed!');
+                window.dialogBox('Success', name + ' removed from Library!')
             }
         },
         loadGames: function(data) {

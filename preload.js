@@ -1,7 +1,7 @@
 const { LIBRARY_PATH } = require('./constants');
 const fs = require('fs');
 const request = require('request');
-const { BrowserWindowProxy } = require('electron');
+const { dialog } = require('electron').remote
 const { windowsStore } = require('process');
 
 function readSavedGames() {
@@ -32,3 +32,11 @@ function executeGame(executablePath) {
 }
 
 window.executeGame = executeGame;
+
+function dialogBox(title, message) {
+
+    dialog.showMessageBox(options = { title: title, message: message });
+
+}
+
+window.dialogBox = dialogBox;
