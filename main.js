@@ -3,14 +3,13 @@ const path = require('path');
 const { existsSync, writeFileSync } = require('fs');
 const constants = require('./constants');
 
-function init_window() {
+var appIcon = null;
+app.whenReady().then(() => {
 
     constants.init();
-
     if (!existsSync(constants.LIBRARY_PATH + "\\library.json")) {
         writeFileSync(constants.LIBRARY_PATH + "\\library.json", "[]");
     }
-    appIcon = null;
     let win = new BrowserWindow({
         width: 900,
         height: 600,
@@ -23,17 +22,16 @@ function init_window() {
         title: 'Woodland Organizer'
     })
 
+    win.setIcon(path.join(__dirname, 'icon.ico'));
+    win.loadFile('main.html');
     configureEvents(win);
     actionBar(win, app, Menu, Tray, appIcon);
-}
+})
+
 
 function actionBar(win, app, Menu, Tray, appIcon) {
 
-    win.setIcon(path.join(__dirname, 'icon.ico'));
-    win.loadFile('main.html');
-
-
-    var appIcon = new Tray(path.join(__dirname, 'icon.ico'));
+    appIcon = new Tray(path.join(__dirname, 'icon.ico'));
     var contextMenu = Menu.buildFromTemplate([{
             label: 'Show',
             click: function() {
@@ -52,12 +50,10 @@ function actionBar(win, app, Menu, Tray, appIcon) {
     appIcon.setContextMenu(contextMenu);
 
     win.on('close', function(event) {
-        /* if (!app.isQuiting) {
+        if (!app.isQuiting) {
             event.preventDefault();
-            win.close();
-        } */
-        app.isQuiting = true;
-        app.quit();
+            win.hide();
+        }
         return false;
     });
 
@@ -90,5 +86,3 @@ function showWindow(window) {
 function hideWindow(window) {
     window.hide();
 }
-
-app.whenReady().then(init_window)
