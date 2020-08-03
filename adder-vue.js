@@ -62,9 +62,9 @@ Vue.component('adder', {
                 this.current_games.push(new_game);
                 let data = JSON.stringify(this.current_games);
                 window.saveJSON(data);
-                window.dialogBox('Success!', this.to_add_game + ' added to Library!');
-                window.location = "./main.html";
+                window.dialogBox('Success!', `${this.to_add_name} added to Library!`);
                 EventBus.$emit('game-added', this.current_games);
+                window.location = "./main.html";
             }
 
         },

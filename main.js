@@ -21,17 +21,18 @@ app.whenReady().then(() => {
         icon: __dirname + '/icon.ico',
         title: 'Woodland Organizer'
     })
-
+    appIcon = new Tray(path.join(__dirname, 'icon.ico'));
+    actionBar(win, app, Menu, Tray, appIcon);
     win.setIcon(path.join(__dirname, 'icon.ico'));
     win.loadFile('main.html');
     configureEvents(win);
-    actionBar(win, app, Menu, Tray, appIcon);
+
 })
 
 
 function actionBar(win, app, Menu, Tray, appIcon) {
 
-    appIcon = new Tray(path.join(__dirname, 'icon.ico'));
+    // appIcon = new Tray(path.join(__dirname, 'icon.ico'));
     var contextMenu = Menu.buildFromTemplate([{
             label: 'Show',
             click: function() {
