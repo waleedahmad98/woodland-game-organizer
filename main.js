@@ -65,7 +65,7 @@ function configureEvents(window) {
         if (window.isVisible()) {
             hideWindow(window);
         } else {
-            showWindow(window);
+            window.show();
         }
     });
 
