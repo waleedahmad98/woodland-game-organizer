@@ -1,8 +1,8 @@
 const { LIBRARY_PATH } = require('./constants');
 const fs = require('fs');
-const request = require('request');
+const { dirname, basename } = require('path');
 const { dialog } = require('electron').remote
-const { windowsStore } = require('process');
+const { spawn } = require('child_process');
 
 function readSavedGames() {
     window.arr = fs.readFileSync(LIBRARY_PATH + '\\library.json');
@@ -17,14 +17,10 @@ function saveJSON(obj) {
 
 window.saveJSON = saveJSON;
 
-var child = require('child_process').execFile;
-
 function executeGame(executablePath) {
-    var spawn = require('child_process').spawn;
 
-    var child = spawn(executablePath, [], {
-        detached: true,
-        stdio: ['ignore', 'ignore', 'ignore']
+    var child = spawn('starter.bat', [dirname(executablePath), basename(executablePath)], {
+        detached: true
     });
 
     child.unref();

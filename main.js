@@ -55,7 +55,6 @@ function actionBar(win, app, Menu, Tray, appIcon) {
             event.preventDefault();
             win.hide();
         }
-        return false;
     });
 
 }
@@ -72,16 +71,13 @@ function configureEvents(window) {
 
     const singleInstanceLock = app.requestSingleInstanceLock();
     if (!singleInstanceLock) {
+        app.isQuiting = true;
         app.quit();
     } else {
         app.on('second-instance', () => {
-            showWindow(window);
+            window.show();
         });
     }
-}
-
-function showWindow(window) {
-    window.show();
 }
 
 function hideWindow(window) {
