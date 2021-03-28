@@ -5,6 +5,9 @@
 	Woodland<br><sub>A light-weight organizer for your game library.</sub>
 </h1>
 
+<img src="https://user-images.githubusercontent.com/60568107/112765782-30fe5d00-9028-11eb-9b05-63fcac97fce4.PNG"/>
+
+
 ## Description
 Woodland is an eletron application that stores currently installed games on your personal computer. The applciation allows faster access to your games so that they can be launched without opening the game's folder. The launcher overlays on your current screen and showcases the installed games which can be launched with one click.
 
