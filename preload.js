@@ -2,7 +2,10 @@ const { LIBRARY_PATH } = require('./constants');
 const fs = require('fs');
 const { dirname, basename } = require('path');
 const { dialog } = require('electron').remote
+const jsdom = require("jsdom");
 const { spawn } = require('child_process');
+const { BrowserWindowProxy } = require('electron');
+
 
 function readSavedGames() {
     window.arr = fs.readFileSync(LIBRARY_PATH + '\\library.json');
@@ -36,3 +39,9 @@ function dialogBox(title, message) {
 }
 
 window.dialogBox = dialogBox;
+
+function getDOM(text) {
+    return new jsdom.JSDOM(text);
+}
+
+window.getDOM = getDOM;

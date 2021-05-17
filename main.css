@@ -142,8 +142,8 @@ body {
 .game-img {
     position: relative;
     box-shadow: 0px 0px 10px black;
-    height: 135px;
-    width: 240px;
+    height: 235px;
+    width: 176px;
     outline: none;
     border: solid 1px transparent;
 }

@@ -39,12 +39,19 @@ Vue.component('adder', {
         search: async function(searched_item) {
             if (searched_item != "") {
                 this.changeState(1);
-                let resp = await fetch(`https://rawg.io/api/games?page_size=20&search=${searched_item}&page=1&page_size=5`);
-                let results = (await resp.json()).results;
+                //let resp = await fetch(`https://rawg.io/api/games?page_size=20&search=${searched_item}&page=1&page_size=5`);
+                //let results = (await resp.json()).results;
 
+                let res = await fetch(`https://www.igdb.com/search?type=1&q=${searched_item}`);
+                //let dom = new jsdom.JSDOM(await res.text());
+                let text = await res.text()
+                let dom  = window.getDOM(text);
+                console.log(dom);
+                let json = dom.window.document.getElementById('results_json').getAttribute('data-json');
+                let results = JSON.parse(json);
                 this.results = results.map(x => ({
-                    name: x.name,
-                    cover: x.background_image
+                    name: x.data.name,
+                    cover: `https://images.igdb.com/igdb/image/upload/t_cover_big/${x.data.cloudinary}.jpg`
 
                 }));
                 this.changeState(2);
@@ -69,6 +76,7 @@ Vue.component('adder', {
 
         },
         setDetails: function(name, cover) {
+            console.log(name);
             this.to_add_name = name;
             this.to_add_cover = cover;
             document.getElementById('file-btn').click();

@@ -1,7 +1,7 @@
 {
     "name": "woodland",
     "productName": "Woodland Game Organizer",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "A light-weight game organizer",
     "main": "main.js",
     "scripts": {
@@ -11,11 +11,12 @@
     "author": "Waleed Ahmad",
     "license": "ISC",
     "devDependencies": {
-        "electron": "9.0.0",
+        "electron": "^9.0.0",
         "electron-builder": "^22.3.2",
         "electron-packager": "^15.0.0"
     },
     "dependencies": {
+        "jsdom": "^16.5.3",
         "request": "^2.88.2"
     },
     "build": {
