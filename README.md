@@ -5,7 +5,7 @@
 	Woodland<br><sub>A light-weight organizer for your game library.</sub>
 </h1>
 
-<img src="https://user-images.githubusercontent.com/60568107/112765782-30fe5d00-9028-11eb-9b05-63fcac97fce4.PNG"/>
+<img src="https://user-images.githubusercontent.com/60568107/131877025-d320d154-100e-443f-92c8-3a9eb1cc3691.png"/>
 
 
 ## Description
@@ -13,7 +13,7 @@ Woodland is an electron application that stores currently installed games on you
 
 ## Installation
 Download the executable file from
-[here](https://github.com/waleedahmad98/woodland-game-organizer/releases/tag/1.0) and install it on your personal computer.
+[here](https://github.com/waleedahmad98/woodland-game-organizer/releases/tag/2.0.0) and install it on your personal computer.
 
 ## Usage
 Once the application launches, use the 'F9' key to hide/display the main window. The application also appears in the tray on your taskbar.
