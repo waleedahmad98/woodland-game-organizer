@@ -1,3 +1,5 @@
+# NOTICE:
+## This app has been deprecated. A newer and better version of this app is in development.
 <p align="center">
 	<img style="height="120px" width="120px" src="html/top-bar-logo.png" />
 </p>
