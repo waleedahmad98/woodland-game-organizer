@@ -1,3 +1,5 @@
+const cheerio = require("cheerio")
+
 Vue.component('adder', {
     template: `<div>
     <div class="search-bar-container">
@@ -24,7 +26,7 @@ Vue.component('adder', {
 </div>
 </div>
 `,
-    data: function() {
+    data: function () {
         return {
             state: 0, //0 - not loading, 1- loading, 2 - loaded
             results: [],
@@ -36,29 +38,22 @@ Vue.component('adder', {
         }
     },
     methods: {
-        search: async function(searched_item) {
+        search: async function (searched_item) {
             if (searched_item != "") {
                 this.changeState(1);
-                //let resp = await fetch(`https://rawg.io/api/games?page_size=20&search=${searched_item}&page=1&page_size=5`);
-                //let results = (await resp.json()).results;
-
                 let res = await fetch(`https://www.igdb.com/search?type=1&q=${searched_item}`);
-                //let dom = new jsdom.JSDOM(await res.text());
                 let text = await res.text()
-                let dom  = window.getDOM(text);
-                console.log(dom);
-                let json = dom.window.document.getElementById('results_json').getAttribute('data-json');
-                let results = JSON.parse(json);
-                this.results = results.map(x => ({
-                    name: x.data.name,
-                    cover: `https://images.igdb.com/igdb/image/upload/t_cover_big/${x.data.cloudinary}.jpg`
-
-                }));
+                let $ = cheerio.load(text)
+                this.results = $(".media").map((i, game) => ({
+                    name: $(game).attr("title"),
+                    cover: $(game).find("img").attr("src").replace("small", "big")
+                })
+                )
                 this.changeState(2);
             }
         },
 
-        saveFile: async function() {
+        saveFile: async function () {
             if (document.getElementById("file-btn").files.length == 0)
                 window.dialogBox("Invalid Action", "Please select a search game and then choose an executable file for that game!");
             else {
@@ -75,13 +70,13 @@ Vue.component('adder', {
             }
 
         },
-        setDetails: function(name, cover) {
+        setDetails: function (name, cover) {
             console.log(name);
             this.to_add_name = name;
             this.to_add_cover = cover;
             document.getElementById('file-btn').click();
         },
-        changeState: function(s) {
+        changeState: function (s) {
             this.state = s;
         }
     }

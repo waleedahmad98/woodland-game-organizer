@@ -15,7 +15,7 @@ app.whenReady().then(() => {
         height: 600,
         frame: false,
         webPreferences: {
-            nodeIntegration: false,
+            nodeIntegration: true,
             preload: path.join(__dirname, 'preload.js')
         },
         icon: __dirname + '/icon.ico',
